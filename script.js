@@ -21,7 +21,7 @@ const weddingData = {
   venueShort: "Phía sau Văn phòng Ấp Tân Phú",
   venueAddress: "Nguyễn Tri Phương, Phường Tân Hiệp, TP. Hồ Chí Minh",
   mapEmbedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1957.8956498858365!2d106.71778734773396!3d11.054268070937404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174cffed9572c81%3A0xa4dd40f8e12a9783!2sLand%20TPK%20Interested!5e0!3m2!1svi!2sus!4v1781683690211!5m2!1svi!2sus",,
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1957.8956498858365!2d106.71778734773396!3d11.054268070937404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174cffed9572c81%3A0xa4dd40f8e12a9783!2sLand%20TPK%20Interested!5e0!3m2!1svi!2sus!4v1781683690211!5m2!1svi!2sus",
   mapLink:
     "https://www.google.com/maps/search/?api=1&query=3P3C+P33+Land+TPK+Interested%2C+T%C3%A2n+Hi%E1%BB%87p%2C+H%E1%BB%93+Ch%C3%AD+Minh%2C+Vi%E1%BB%87t+Nam",
   closingNote:
