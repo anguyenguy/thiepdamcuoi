@@ -34,7 +34,31 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body class="overlay-active">
+    <div class="opening-overlay" id="opening-overlay" aria-hidden="false">
+      <div class="opening-backdrop"></div>
+      <div class="opening-card-shell">
+        <button class="opening-card" id="open-invitation" type="button" aria-label="Mở thiệp cưới">
+          <span class="opening-door opening-door-left">
+            <span class="door-inner">
+              <span class="door-monogram" data-bind="groomShortName"></span>
+              <span class="door-symbol">囍</span>
+            </span>
+          </span>
+          <span class="opening-door opening-door-right">
+            <span class="door-inner">
+              <span class="door-monogram" data-bind="brideShortName"></span>
+              <span class="door-symbol">囍</span>
+            </span>
+          </span>
+          <span class="opening-spine"></span>
+          <span class="opening-glow"></span>
+        </button>
+        <p class="opening-title">Thiệp mời thành hôn</p>
+        <p class="opening-subtitle">Chạm để mở thiệp</p>
+      </div>
+    </div>
+
     <div class="page-shell">
       <header class="hero" id="home">
         <nav class="topbar">

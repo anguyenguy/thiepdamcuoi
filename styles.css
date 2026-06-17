@@ -33,6 +33,10 @@ body {
     linear-gradient(180deg, #fff8ef 0%, var(--bg) 40%, #f2e5d7 100%);
 }
 
+body.overlay-active {
+  overflow: hidden;
+}
+
 img {
   display: block;
   width: 100%;
@@ -46,6 +50,253 @@ a {
 .page-shell {
   position: relative;
   overflow: hidden;
+  transition:
+    filter 700ms ease,
+    transform 700ms ease,
+    opacity 700ms ease;
+}
+
+body.overlay-active .page-shell {
+  filter: blur(12px);
+  transform: scale(1.02);
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.opening-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease;
+}
+
+.opening-overlay.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.opening-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(240, 206, 150, 0.18), transparent 26%),
+    linear-gradient(180deg, rgba(40, 8, 8, 0.28), rgba(30, 8, 8, 0.6)),
+    linear-gradient(135deg, #7f1d1d, #451010);
+}
+
+.opening-backdrop::before,
+.opening-backdrop::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(255, 226, 188, 0.14);
+  border-radius: 50%;
+}
+
+.opening-backdrop::before {
+  top: -120px;
+  left: -80px;
+}
+
+.opening-backdrop::after {
+  right: -120px;
+  bottom: -120px;
+}
+
+.opening-card-shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.opening-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(88vw, 460px);
+  aspect-ratio: 0.62;
+  padding: 0;
+  border: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(132, 26, 26, 0.96), rgba(92, 15, 15, 0.96)),
+    #7f1d1d;
+  box-shadow:
+    0 24px 70px rgba(16, 3, 3, 0.45),
+    inset 0 0 0 1px rgba(255, 227, 187, 0.22);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.opening-card::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 226, 188, 0.22);
+  border-radius: 22px;
+  pointer-events: none;
+}
+
+.opening-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 248, 234, 0.08), transparent 24%),
+    linear-gradient(90deg, transparent 47%, rgba(255, 255, 255, 0.04) 50%, transparent 53%);
+  pointer-events: none;
+}
+
+.opening-door {
+  position: relative;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  transition:
+    transform 1400ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    opacity 700ms ease;
+  transform-origin: center;
+}
+
+.opening-door-left {
+  border-right: 1px solid rgba(255, 228, 197, 0.16);
+}
+
+.opening-door-right {
+  border-left: 1px solid rgba(255, 228, 197, 0.16);
+}
+
+.door-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44px 20px 40px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(110, 12, 12, 0.1), transparent 24%, rgba(32, 6, 6, 0.16)),
+    linear-gradient(180deg, #8f2020, #681515);
+}
+
+.door-inner::before {
+  content: "";
+  position: absolute;
+  inset: 18px 14px;
+  border: 1px solid rgba(255, 227, 187, 0.16);
+  border-radius: 18px;
+}
+
+.door-monogram,
+.door-symbol {
+  position: relative;
+  z-index: 1;
+  color: #fff4ea;
+}
+
+.door-monogram {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(3.2rem, 12vw, 5.2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.door-symbol {
+  font-size: clamp(4rem, 15vw, 6rem);
+  line-height: 1;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+}
+
+.opening-spine {
+  position: absolute;
+  top: 7%;
+  bottom: 7%;
+  left: 50%;
+  width: 12px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 234, 203, 0.76), rgba(255, 234, 203, 0.22)),
+    linear-gradient(180deg, #f6d8af, #d59b58);
+  box-shadow:
+    0 0 0 1px rgba(255, 245, 227, 0.2),
+    0 0 28px rgba(255, 214, 160, 0.14);
+  transition:
+    opacity 500ms ease,
+    transform 1200ms ease;
+}
+
+.opening-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 45%, rgba(255, 247, 233, 0.88) 50%, transparent 55%);
+  opacity: 0.18;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: spinePulse 2800ms ease-in-out infinite;
+}
+
+.opening-title,
+.opening-subtitle {
+  margin: 0;
+  color: #fff3e4;
+}
+
+.opening-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.opening-subtitle {
+  font-size: 0.98rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 243, 228, 0.76);
+}
+
+.opening-overlay.is-opening .opening-door-left {
+  transform: translateX(-112%);
+}
+
+.opening-overlay.is-opening .opening-door-right {
+  transform: translateX(112%);
+}
+
+.opening-overlay.is-opening .opening-spine {
+  opacity: 0;
+  transform: translateX(-50%) scaleY(0.7);
+}
+
+.opening-overlay.is-opening .opening-card {
+  box-shadow: 0 30px 90px rgba(16, 3, 3, 0.24);
+}
+
+.opening-overlay.is-opening .opening-title,
+.opening-overlay.is-opening .opening-subtitle {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
 }
 
 .page-shell::before,
@@ -439,6 +690,17 @@ a {
   text-align: center;
 }
 
+@keyframes spinePulse {
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+
+  50% {
+    opacity: 0.26;
+  }
+}
+
 @media (max-width: 960px) {
   .hero,
   .timeline-layout,
@@ -479,6 +741,19 @@ a {
 }
 
 @media (max-width: 720px) {
+  .opening-overlay {
+    padding: 18px;
+  }
+
+  .opening-card {
+    width: min(92vw, 420px);
+    border-radius: 24px;
+  }
+
+  .door-inner {
+    padding: 34px 14px 30px;
+  }
+
   .topbar {
     flex-direction: column;
     border-radius: 26px;

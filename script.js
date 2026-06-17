@@ -2,6 +2,8 @@ const weddingData = {
   introLabel: "Lễ thành hôn",
   groomFullName: "Hồng Quân",
   brideFullName: "Mai Vy",
+  groomShortName: "Q",
+  brideShortName: "V",
   groomFamilyLine: "Trưởng nam họ Nguyễn",
   brideFamilyLine: "Trưởng nữ họ Mai",
   groomParents: "Con ông Nguyễn Xuân Thương và bà Tô Thị Thuỳ Linh",
@@ -140,8 +142,44 @@ function setupMap() {
   mapLink.href = weddingData.mapLink;
 }
 
+function setupOpeningOverlay() {
+  const overlay = document.getElementById("opening-overlay");
+  const openButton = document.getElementById("open-invitation");
+
+  if (!overlay || !openButton) {
+    return;
+  }
+
+  const openedKey = "weddingInvitationOpened";
+  const completeOpen = () => {
+    overlay.classList.add("is-hidden");
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("overlay-active");
+  };
+
+  document.body.classList.add("overlay-active");
+
+  if (window.sessionStorage.getItem(openedKey) === "true") {
+    completeOpen();
+    return;
+  }
+
+  const openInvitation = () => {
+    if (overlay.classList.contains("is-opening")) {
+      return;
+    }
+
+    overlay.classList.add("is-opening");
+    window.sessionStorage.setItem(openedKey, "true");
+    window.setTimeout(completeOpen, 1400);
+  };
+
+  openButton.addEventListener("click", openInvitation);
+}
+
 bindTextContent();
 renderHeroPhoto();
 renderGallery();
 renderQuotes();
 setupMap();
+setupOpeningOverlay();
