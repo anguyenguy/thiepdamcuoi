@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thiệp Cưới Hồng Quân Mai Vy</title>
+    <meta
+      name="description"
+      content="Thiệp cưới online phong cách Việt Nam với ảnh cưới, lịch trình và bản đồ địa điểm."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero" id="home">
+        <nav class="topbar">
+          <a class="brand" href="#home">Thiệp Hồng</a>
+          <div class="nav-links">
+            <a href="#story">Giới thiệu</a>
+            <a href="#timeline">Lễ cưới</a>
+            <a href="#location">Bản đồ</a>
+          </div>
+        </nav>
+
+        <div class="hero-content">
+          <p class="eyebrow" data-bind="introLabel"></p>
+          <h1 class="couple-script">
+            <span data-bind="groomFullName"></span>
+            <span class="ampersand">&amp;</span>
+            <span data-bind="brideFullName"></span>
+          </h1>
+          <p class="hero-message" data-bind="invitationMessage"></p>
+
+          <div class="hero-meta">
+            <div class="meta-card">
+              <span class="meta-title">Ngày tổ chức</span>
+              <strong data-bind="weddingDate"></strong>
+            </div>
+            <div class="meta-card">
+              <span class="meta-title">Thời gian</span>
+              <strong data-bind="weddingTime"></strong>
+            </div>
+            <div class="meta-card">
+              <span class="meta-title">Địa điểm</span>
+              <strong data-bind="venueShort"></strong>
+            </div>
+          </div>
+
+          <a class="primary-button" href="#location">Xem đường đến lễ cưới</a>
+        </div>
+
+        <div class="hero-photo-frame">
+          <img id="hero-photo" alt="Ảnh cưới của cô dâu và chú rể" />
+          <div class="seal">
+            <span>Song hỷ</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="section story" id="story">
+          <div class="section-heading">
+            <p class="section-kicker">Trân trọng báo tin</p>
+            <h2>Ngày vui của gia đình chúng mình</h2>
+          </div>
+
+          <div class="story-grid">
+            <article class="story-card">
+              <h3>Nhà trai</h3>
+              <p class="family-name" data-bind="groomFamilyLine"></p>
+              <p data-bind="groomParents"></p>
+            </article>
+            <article class="story-card accent-card">
+              <h3>Thiệp mời</h3>
+              <p data-bind="invitationBody"></p>
+            </article>
+            <article class="story-card">
+              <h3>Nhà gái</h3>
+              <p class="family-name" data-bind="brideFamilyLine"></p>
+              <p data-bind="brideParents"></p>
+            </article>
+          </div>
+
+          <div class="gallery-grid" id="gallery"></div>
+        </section>
+
+        <section class="section quote-section">
+          <div class="section-heading">
+            <p class="section-kicker">Duyên lành</p>
+            <h2>Những câu ca dao tục ngữ mộc mạc mà thương</h2>
+          </div>
+          <div class="quote-grid" id="quotes"></div>
+        </section>
+
+        <section class="section timeline" id="timeline">
+          <div class="section-heading">
+            <p class="section-kicker">Lịch trình</p>
+            <h2>Thông tin lễ cưới</h2>
+          </div>
+
+          <div class="timeline-layout">
+            <div class="timeline-card">
+              <p class="timeline-date" data-bind="weddingDate"></p>
+              <h3 data-bind="venueName"></h3>
+              <p data-bind="venueAddress"></p>
+              <div class="detail-list">
+                <div>
+                  <span>Đón khách</span>
+                  <strong data-bind="guestReception"></strong>
+                </div>
+                <div>
+                  <span>Nghi lễ</span>
+                  <strong data-bind="ceremonyTime"></strong>
+                </div>
+                <div>
+                  <span>Tiệc mừng</span>
+                  <strong data-bind="partyTime"></strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-card">
+              <h3>Một lời nhắn nhỏ</h3>
+              <p data-bind="closingNote"></p>
+              <a
+                class="secondary-button"
+                id="map-link"
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Mở Google Maps
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section class="section location" id="location">
+          <div class="section-heading">
+            <p class="section-kicker">Chỉ đường</p>
+            <h2>Google Maps địa điểm tổ chức</h2>
+          </div>
+
+          <div class="map-card">
+            <iframe
+              id="map-frame"
+              title="Bản đồ địa điểm tổ chức đám cưới"
+              loading="lazy"
+              allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p data-bind="footerMessage"></p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
